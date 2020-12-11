@@ -1,0 +1,1 @@
+{'Smoke': ['building.jpg', 'mountain.jpg', 'fire.jpg'], 'No smoke': ['pier.jpg', 'tree.jpg']}
