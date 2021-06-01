@@ -56,9 +56,14 @@ dictionary = {
     "No smoke":nresults
 }
 
-f = open("dictionary.txt", "w")
-f.write( str(dictionary) )
-f.close()
+# f = open("dictionary.txt", "w")
+# f.write( str(dictionary) )
+# f.close()
+def writeDictionary():
+    with open("dictionary.txt", "w") as f:
+        f.write( str(dictionary) )
+        
+writeDictionary()
 
 x = open('dictionary.txt', 'r+')
 new_dictionary = dict(x.read() )
