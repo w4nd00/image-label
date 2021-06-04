@@ -11,6 +11,19 @@ import os
 #   skip them. i.e. only label images you haven't labelled yet
 #   - With this feature, you will be able to continually add new photos to your dataset
 #     and not have to re-label all the old ones
+#   - We will break this down into more bite-sized chunks:
+#     1. Directly reading and writing dicts as strings (what we have ATM) isn't going to
+#        work, so we will need to use a file format that can represent a dict correctly
+#        - I suggest we read and write json files
+#        - I want you to try (in a separate script maybe) to do the following things:
+#          - Create a dict in the Python script, with some arbitrary data in it (e.g.
+#            some strings, numbers, etc). If you don't fully remember how dicts work,
+#            look up a tutorial online
+#          - Write that dict to a json file (hint: you will probably need to use the
+#            json.dump() and json.load() functions for this and the next point. Look up
+#            tutorials on how to use them
+#          - Read that json file into a new dict
+#          - Check the two dicts are the same (i.e. no data has been lost along the way)
 
 ## TODO for Wando + Hamish
 # - Segment this program into distinct groups using functions or comment blocks
