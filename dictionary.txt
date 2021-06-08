@@ -1,1 +1,1 @@
-{'Smoke': ['building.jpg', 'mountain.jpg', 'fire.jpg'], 'No smoke': ['pier.jpg', 'tree.jpg']}
+{"Smoke": ["fire.jpg", "mountain.jpg", "tree.jpg"], "No smoke": ["building.jpg", "pier.jpg"]}
