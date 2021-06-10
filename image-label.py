@@ -35,13 +35,13 @@ import json
 # You may feel some of the other variables could be better named too, so have a look at
 # all the variables in this program and apply the above thought process. Your future self
 # will thank you
-contents = os.listdir("pics")
+image_db = os.listdir("pics")
 
 
 yresults = []
 nresults = []
 
-for img in contents:
+for img in image_db:
     path = os.path.join("pics", img)
     image = cv2.imread(path)
     cv2.imshow("pic", image) 
@@ -78,6 +78,8 @@ validation_dict = readDictionary()
 #new_dictionary = dict(x.read() )
 #x.close()
 
+for a in validation_dict:
+	os.path.isfile('./')
 
 #print("Smoke")
 #print(yresults)
