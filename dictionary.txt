@@ -1,1 +1,0 @@
-{"Smoke": ["fire.jpg", "mountain.jpg", "tree.jpg"], "No smoke": ["building.jpg", "pier.jpg"]}

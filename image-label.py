@@ -1,7 +1,8 @@
 import cv2
-import os
 import json
-
+import os
+import sys
+import typing
 
 ## TODO for Wando
 # - Run through the code and make sure you understand what it does
@@ -35,45 +36,53 @@ import json
 # You may feel some of the other variables could be better named too, so have a look at
 # all the variables in this program and apply the above thought process. Your future self
 # will thank you
-image_db = os.listdir("pics")
+
+        
+def read_dictionary(labels_file: str) -> dict:
+    if os.path.exists(labels_file):
+	    with open(labels_file, "r") as x:
+		    return json.load(x)
+    else:
+        return {
+            "smoke"    : [],
+            "no_smoke" : []
+        }
+
+def write_dictionary(labels_file: str, labels: dict) -> None:
+    with open(labels_file, "w") as f:
+        json.dump(labels, f)
 
 
-dictionary = 
-{
-    "smoke"    : [],
-    "no_smoke" : []
-}
+def label(image_directory: str, labels: dict) -> dict:
 
-def label(image_db: str) -> None:
-    for img in image_db:
-        path = os.path.join("pics", img)
-        image = cv2.imread(path)
+    def image_names() -> typing.List[str]:
+        return os.listdir(image_directory)
+
+    def already_labelled(image_name: str) -> bool:
+        return image_name in labels["no_smoke"] or image_name in labels["smoke"]
+
+    for image_name in image_names():
+        if already_labelled(image_name):
+            print("Already labelled: {}".format(image_name))
+            continue
+        full_path = os.path.join(image_directory, image_name)
+        image = cv2.imread(full_path)
         cv2.imshow("pic", image) 
         k = cv2.waitKey(0)
         if k == ord("y"):
-            dictionary["smoke"].append(img)
+            labels["smoke"].append(image_name)
         elif k == ord("n"):
-            dictionary["no_smoke"].append(img)
+            labels["no_smoke"].append(image_name)
+    return labels
 
-def writeDictionary():
-    with open("dictionary.txt", "w") as f:
-        json.dump(dictionary, f) 
-        
-def readDictionary():
-	with open("dictionary.txt", "r+") as x:
-		return json.load(x)
 		
 def main() -> int:
     
-    writeDictionary()
+    labels = read_dictionary("dictionary.json")
 
-    validation_dict = readDictionary()
+    labels = label(image_directory="pics", labels=labels)
 
-    for a in validation_dict:
-            os.path.isfile('./')
-
-    print(dictionary)
-    print(validation_dict)
+    write_dictionary('dictionary.json', labels=labels)
     
     return 0
 
