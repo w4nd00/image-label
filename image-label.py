@@ -38,53 +38,47 @@ import json
 image_db = os.listdir("pics")
 
 
-yresults = []
-nresults = []
-
-for img in image_db:
-    path = os.path.join("pics", img)
-    image = cv2.imread(path)
-    cv2.imshow("pic", image) 
-    k = cv2.waitKey(0)
-    if k == ord("y"):
-        yresults.append(img)
-        print("Y pressed")
-    elif k == ord("n"):
-        nresults.append(img)
-        print("N pressed")
-
-dictionary = {
-    "Smoke":yresults,
-    "No smoke":nresults
+dictionary = 
+{
+    "smoke"    : [],
+    "no_smoke" : []
 }
 
-# f = open("dictionary.txt", "w")
-# f.write( str(dictionary) )
-# f.close()
+def label(image_db: str) -> None:
+    for img in image_db:
+        path = os.path.join("pics", img)
+        image = cv2.imread(path)
+        cv2.imshow("pic", image) 
+        k = cv2.waitKey(0)
+        if k == ord("y"):
+            dictionary["smoke"].append(img)
+        elif k == ord("n"):
+            dictionary["no_smoke"].append(img)
+
 def writeDictionary():
     with open("dictionary.txt", "w") as f:
         json.dump(dictionary, f) 
         
-writeDictionary()
-
 def readDictionary():
 	with open("dictionary.txt", "r+") as x:
 		return json.load(x)
 		
-		
-validation_dict = readDictionary()
+def main() -> int:
+    
+    writeDictionary()
 
-#x = open('dictionary.txt', 'r+')
-#new_dictionary = dict(x.read() )
-#x.close()
+    validation_dict = readDictionary()
 
-for a in validation_dict:
-	os.path.isfile('./')
+    for a in validation_dict:
+            os.path.isfile('./')
 
-#print("Smoke")
-#print(yresults)
-#print("No smoke")
-#print(nresults)
+    print(dictionary)
+    print(validation_dict)
+    
+    return 0
 
-print(dictionary)
-print(validation_dict)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+    
