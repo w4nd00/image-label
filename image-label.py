@@ -14,28 +14,11 @@ import typing
 #   - With this feature, you will be able to continually add new photos to your dataset
 #     and not have to re-label all the old ones
 #   - We will break this down into more bite-sized chunks:
-
+      
 ## TODO for Wando + Hamish
-# - Segment this program into distinct groups using functions or comment blocks
-# - Read files using `with ...`
 # - Add a command-line interface
 # - Set up a new git feature branch for Wando to dev on
 #   - We will use pull-requests and be all proper about it
-
-
-# "contents" is a bit vague, something more descriptive would be better.
-#
-# I at least partialy named this variable iirc, sorry to make you do it again :P
-#
-# When choosing variable names, think about what will make the most sense when you come
-# back to this code to edit it later on. Trust me...
-#
-# e.g. pictureDirectoryContents or picture_directory_contents, whatever you prefer
-#                                                                   (just be consistent)
-#
-# You may feel some of the other variables could be better named too, so have a look at
-# all the variables in this program and apply the above thought process. Your future self
-# will thank you
 
         
 def read_dictionary(labels_file: str) -> dict:
